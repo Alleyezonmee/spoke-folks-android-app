@@ -1,5 +1,6 @@
 package com.soulinc.spokeFolks.base.di
 
+import com.soulinc.spokeFolks.account.data.network.IAccountService
 import com.soulinc.spokeFolks.auth.data.network.IAuthService
 import dagger.Module
 import dagger.Provides
@@ -18,4 +19,8 @@ class ServiceModule {
   @Provides
   @ViewModelScoped
   fun provideAuthService(retrofit: Retrofit): IAuthService = retrofit.create(IAuthService::class.java)
+
+  @Provides
+  @ViewModelScoped
+  fun provideAccountService(retrofit: Retrofit): IAccountService = retrofit.create(IAccountService::class.java)
 }

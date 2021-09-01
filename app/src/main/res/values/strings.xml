@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SpokeFolks</string>
+    <string name="achievements">Achievements</string>
+    <string name="adventures">Adventures</string>
+    <string name="rides">Rides</string>
+    <string name="showcases">Showcases</string>
+</resources>

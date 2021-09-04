@@ -29,4 +29,8 @@ open class AuthPrefs @Inject constructor(context: Context) {
   fun refreshCreds(authResponse: AuthResponse) {
     authPrefs.edit().putString(PREF_AUTH_TOKEN, authResponse.authToken).apply()
   }
+
+  fun doLogout() {
+    authPrefs.edit().remove(PREF_AUTH_TOKEN).apply()
+  }
 }

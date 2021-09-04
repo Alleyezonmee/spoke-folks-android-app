@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.soulinc.spokeFolks.R
+import com.soulinc.spokeFolks.REQUEST_LOGIN
 import com.soulinc.spokeFolks.auth.data.model.AuthRequestBody
 import com.soulinc.spokeFolks.auth.viewmodel.AuthViewModel
 import com.soulinc.spokeFolks.base.lifecycle.BaseFragment
@@ -21,13 +22,16 @@ import javax.inject.Inject
 /**
  * paras's creation on 01-05-2021
  */
-@AndroidEntryPoint class AuthFragment : BaseFragment(R.layout.fragment_auth) {
+@AndroidEntryPoint
+class AuthFragment : BaseFragment(R.layout.fragment_auth) {
 
   private lateinit var binding: FragmentAuthBinding
 
-  @Inject lateinit var authPrefs: AuthPrefs
+  @Inject
+  lateinit var authPrefs: AuthPrefs
   private val authRequestBody = AuthRequestBody()
   private val authViewModel by viewModels<AuthViewModel>()
+  private var forLogin: Boolean = true
 
   companion object {
     const val USER = "user"
@@ -41,15 +45,36 @@ import javax.inject.Inject
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
     initListeners()
     observeUserData()
+    updateUi()
   }
 
   private fun initListeners() {
     binding.btnSubmit.setOnClickListener {
       updateRequestBody()
       if (isFormComplete()) {
-        authViewModel.login(authRequestBody)
+        if (forLogin) authViewModel.login(authRequestBody) else authViewModel.register(authRequestBody)
       } else {
         validateForm()
+      }
+    }
+  }
+
+  private fun updateUi() {
+    if (forLogin) {
+      binding.tvHeading.text = getString(R.string.login)
+      binding.btnSubmit.text = getString(R.string.login)
+      binding.tvOtherAction.text = getString(R.string.new_user_signup)
+      binding.tvOtherAction.setOnClickListener {
+        forLogin = false
+        updateUi()
+      }
+    } else {
+      binding.tvHeading.text = getString(R.string.register)
+      binding.btnSubmit.text = getString(R.string.register)
+      binding.tvOtherAction.text = getString(R.string.registered_user_login)
+      binding.tvOtherAction.setOnClickListener {
+        forLogin = true
+        updateUi()
       }
     }
   }

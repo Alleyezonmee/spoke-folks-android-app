@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_dream_rides"
+        android:icon="@drawable/ic_helmet"
+        android:title="@string/dream_rides"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_ride"
+        android:icon="@drawable/ic_ride"
+        android:title="@string/start_ride"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_account"
+        android:icon="@drawable/ic_account"
+        android:title="@string/account"
+        app:showAsAction="always" />
+</menu>

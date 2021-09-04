@@ -4,4 +4,14 @@
     <string name="adventures">Adventures</string>
     <string name="rides">Rides</string>
     <string name="showcases">Showcases</string>
+    <string name="account">Account</string>
+    <string name="start_ride">Start Ride</string>
+    <string name="dream_rides">Dream Rides</string>
+    <string name="home">Home</string>
+    <string name="logout">Logout</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="new_user_signup">New User? SignUp here.</string>
+    <string name="registered_user_login">Registered User? Login here.</string>
+    <string name="login_signup">Login/SignUp</string>
 </resources>
